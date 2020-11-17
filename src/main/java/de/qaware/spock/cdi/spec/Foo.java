@@ -1,4 +1,4 @@
-package spock.test;
+package de.qaware.spock.cdi.spec;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
