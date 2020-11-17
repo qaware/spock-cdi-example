@@ -1,19 +1,20 @@
-package de.qaware.spock.cdi.spec
+package de.qaware.spock.cdi.extension
 
+import de.qaware.spock.cdi.spec.Bar
+import de.qaware.spock.cdi.spec.Foo
+import spock.lang.Specification
 
 import javax.annotation.Priority
 import javax.enterprise.inject.Alternative
 import javax.enterprise.inject.Produces
 import javax.inject.Inject
 
-/**
- * @Priority is required for @Produces @Alternative methods to overwrite the productive CDI bean
- */
+@Cdi
 @Priority(1000)
-class FooSpec extends CdiSpecification {
+class FooExtensionSpec extends Specification {
 
     /**
-     * The fields will be injected by CdiSpecification, not by CDI itself.
+     * The fields will be injected by CDI extension, not by CDI itself.
      */
     @Inject
     Foo foo
