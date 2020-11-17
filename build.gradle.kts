@@ -11,13 +11,15 @@ dependencies {
     // CDI
     implementation("jakarta.platform:jakarta.jakartaee-api:8.0.0")
 
-    // CDI implementation: openwebbeans
-//    testRuntimeOnly("org.apache.openwebbeans:openwebbeans-spi:2.0.20")
-//    testRuntimeOnly("org.apache.openwebbeans:openwebbeans-se:2.0.20")
-
-    // CDI implementation: WELD
-    testRuntimeOnly("org.jboss.weld.se:weld-se-core:3.1.5.Final")
-    testRuntimeOnly("org.jboss:jandex:2.2.2.Final")
+    if (project.hasProperty("useOpenWebBeans")) {
+        // CDI implementation: openwebbeans
+        testRuntimeOnly("org.apache.openwebbeans:openwebbeans-spi:2.0.20")
+        testRuntimeOnly("org.apache.openwebbeans:openwebbeans-se:2.0.20")
+    } else {
+        // CDI implementation: WELD
+        testRuntimeOnly("org.jboss.weld.se:weld-se-core:3.1.5.Final")
+        testRuntimeOnly("org.jboss:jandex:2.2.2.Final")
+    }
 
     // Common test libraries
     testImplementation("org.codehaus.groovy:groovy-all:2.4.9")
